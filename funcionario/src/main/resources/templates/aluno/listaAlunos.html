@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Alunos</title>
+    <link rel="stylesheet" href="/css/aluno.css" />
+  </head>
+  <body>
+    <h1>👨‍🎓 Lista de Alunos</h1>
+
+    <div style="text-align: center;">
+      <a href="/alunos/criar" class="btn-cadastrar">Cadastrar</a>
+    </div>
+
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Endereço</th>
+        <th>Telefone</th>
+        <th>RA</th>
+        <th>Ações</th>
+      </tr>
+      <tr th:each="aluno : ${alunos}">
+        <td th:text="${aluno.idAluno}">*</td>
+        <td th:text="${aluno.nomeAluno}">*</td>
+        <td th:text="${aluno.endAluno}">*</td>
+        <td th:text="${aluno.telAluno}">*</td>
+        <td th:text="${aluno.raAluno}">*</td>
+        <td>
+          <div class="action-buttons">
+            <a th:href="@{/alunos/editar/{id}(id=${aluno.idAluno})}" class="icon-button edit">
+              <i class="fas fa-pen"></i>
+            </a>
+            <a th:href="@{/alunos/excluir/{id}(id=${aluno.idAluno})}" class="icon-button delete">
+              <i class="fas fa-trash"></i>
+            </a>
+          </div>
+          
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
