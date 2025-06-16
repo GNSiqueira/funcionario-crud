@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro de Funcionários</title>
+    <link rel="stylesheet" href="/css/funcionario.css" />
+  </head>
+  <body>
+    <h1>Cadastrar Funcionários</h1>
+    <form th:action="@{/funcionarios/salvar}" method="POST" th:object="${funcionario}">
+      <input type="hidden" name="id" th:field="*{id}" readonly />
+
+      <label for="nome">Nome:</label>
+      <input type="text" name="nome" th:field="*{nome}" />
+
+      <label for="endereco">Endereço:</label>
+      <input type="text" name="endereco" th:field="*{endereco}" />
+
+      <label for="cpf">CPF:</label>
+      <input type="text" name="cpf" th:field="*{cpf}" />
+
+      <label for="salario">Salário:</label>
+      <input type="text" name="salario" th:field="*{salario}" />
+
+      <label for="categoria">
+        <select th:field="*{categoria}">
+          <option value="" disabled selected>Selecione uma Categoria</option>
+          <option th:each="categoria : ${categorias}" th:text="${categoria.nomeCategoria}" th:value="${categoria.id}">
+          </option>
+        </select>
+      </label>
+
+      <input type="submit" value="Cadastrar" />
+    </form>
+  </body>
+</html>

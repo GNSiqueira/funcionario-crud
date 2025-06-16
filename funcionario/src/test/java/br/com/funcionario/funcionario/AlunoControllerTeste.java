@@ -10,8 +10,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 
 import br.com.funcionario.funcionario.controller.AlunoController;
-import br.com.funcionario.funcionario.entity.Aluno;
-import br.com.funcionario.funcionario.service.AlunoService; 
+import br.com.funcionario.funcionario.entity.Funcionario;
+import br.com.funcionario.funcionario.service.FuncionarioService; 
 
 @WebMvcTest(AlunoController.class)
 public class AlunoControllerTeste {
@@ -19,11 +19,11 @@ public class AlunoControllerTeste {
     private MockMvc mockMvc;
 
     @MockBean
-    private AlunoService alunoService; 
+    private FuncionarioService alunoService; 
 
     @Test
     void testSalvarAluno() throws Exception{
-        Aluno aluno = new Aluno();
+        Funcionario aluno = new Funcionario();
 
         aluno.setNomeAluno("João");
         aluno.setEndAluno("Rua A");

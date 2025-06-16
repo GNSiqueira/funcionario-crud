@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Funcionários</title>
+    <link rel="stylesheet" href="/css/funcionario.css" />
+  </head>
+  <body>
+    <h1>Lista de Funcionários</h1>
+
+    <div style="text-align: center;">
+      <a href="/funcionarios/criar" class="btn-cadastrar">Cadastrar Novo Funcionário</a>
+    </div>
+
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Endereço</th>
+        <th>CPF</th>
+        <th>Salário</th>
+        <th>Ações</th>
+      </tr>
+      <tr th:each="funcionario : ${funcionarios}">
+        <td th:text="${funcionario.id}">*</td>
+        <td th:text="${funcionario.nome}">*</td>
+        <td th:text="${funcionario.endereco}">*</td>
+        <td th:text="${funcionario.cpf}">*</td>
+        <td th:text="${funcionario.salario}">*</td>
+        <td>
+          <div class="action-buttons">
+            <a th:href="@{/funcionarios/editar/{id}(id=${funcionario.id})}" class="icon-button edit">
+              <i class="fas fa-pen"></i>
+            </a>
+            <a th:href="@{/funcionarios/excluir/{id}(id=${funcionario.id})}" class="icon-button delete">
+              <i class="fas fa-trash"></i>
+            </a>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
